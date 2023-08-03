@@ -15,8 +15,13 @@ header{
 }
 .display{
     width: 400px;
-    height: 600px;
+    height: 700px;
     background: black url(image/macbook.jpg);
     object-fit: cover;
     object-position: 50% 100%;
+}
+.display span{
+    font-size: 40px;
+    color: wheat;
+    padding: 20px 40px;
 }
