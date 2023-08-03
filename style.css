@@ -16,5 +16,5 @@ header{
 .display{
     width: 100%;
     height: 600px;
-    background: url(image/macbook.jpg);
+    background: black url(image/macbook.jpg);
 }
