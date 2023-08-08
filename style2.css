@@ -1,6 +1,18 @@
+
 @media only screen and (max-width: 400px) {
-    nav{
-        
+    /* body{
+        position: relative;
+    } */
+    *{
+       visibility: hidden; 
+    }
+    header{
+        width: 100%;
+        height: 50px;
         background: red;
+        visibility: visible;
+    }
+    nav{
+        visibility: hidden;
     }
   }
