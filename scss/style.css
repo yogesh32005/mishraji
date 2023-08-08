@@ -1,0 +1,149 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+nav {
+  width: 100%;
+  height: 80px;
+  background: rgba(0, 0, 0, 0.897);
+  z-index: 12;
+  position: fixed;
+}
+nav span {
+  float: left;
+  padding: 15px 0 0 80px;
+}
+nav span img {
+  height: 50px;
+}
+nav ul {
+  list-style-type: none;
+  padding: 15px 0 0 400px;
+}
+nav ul .list-item {
+  float: left;
+  padding: 20px 20px;
+}
+nav ul li a {
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+}
+nav .sign {
+  float: right;
+  display: inline-block;
+  width: 280px;
+  height: 50px;
+  padding-top: 20px;
+  margin-right: 50px;
+}
+nav .sign .sign-btn {
+  text-decoration: none;
+  font-size: 18px;
+  padding: 14px 22px;
+  margin: 10px 10px;
+  color: rgb(245, 243, 243);
+  border-radius: 5px;
+  background-color: rgb(27, 87, 199);
+}
+nav .sign .sign-btn:nth-child(even) {
+  background-color: rgb(72, 68, 68);
+}
+nav .sign .moon {
+  padding: 15px 15px;
+  border-radius: 50%;
+  background: white;
+  float: right;
+}
+
+.front {
+  width: 100%;
+  height: 120vh;
+  display: flex;
+  background: rgb(2, 0, 36);
+  background: linear-gradient(90deg, rgb(2, 0, 36) 0%, rgb(2, 41, 50) 48%, rgb(9, 24, 54) 100%);
+  padding: 100px 0 50px 0;
+}
+.front .con-left {
+  width: 50%;
+  height: 100%;
+  color: white;
+  padding: 200px 100px;
+}
+.front .con-left .con-li {
+  background: rgba(255, 254, 254, 0.134);
+  width: 40%;
+  margin-top: 400px;
+  font-size: 18px;
+  padding: 10px 20px;
+  border-radius: 20px;
+}
+.front .con-left h1 {
+  font-size: 60px;
+  padding: 20px 10px;
+}
+.front .con-left p {
+  font-size: 18px;
+  color: rgb(131, 142, 142);
+}
+.front .con-left .st-btn {
+  padding: 50px 0 0 30px;
+}
+.front .con-left .st-btn a {
+  text-decoration: none;
+  padding: 15px 40px;
+  border-radius: 10px;
+  background: rgb(27, 87, 199);
+  font-size: 18px;
+  color: white;
+}
+.front .con-left .st-btn .ho-btn {
+  background: none;
+}
+.front .con-right {
+  width: 50%;
+  height: 100%;
+  padding: 50px 0 0 40px;
+}
+.front .con-right .bgim {
+  height: auto;
+  background-image: url(image-2.jpg);
+  background-color: black;
+}
+.front .con-right .bgim img {
+  position: absolute;
+}
+.front .con-right .bgim #img1 {
+  opacity: 0px;
+  right: 100px;
+}
+.front .con-right .bgim #img2 {
+  bottom: 0px;
+  box-shadow: 20px -20px rgba(255, 255, 255, 0.318);
+}
+
+#features {
+  height: 800px;
+  background-color: rgba(0, 0, 0, 0.923);
+  padding: 100px 0 0 0;
+  text-align: center;
+}
+
+.fe-con .h-con {
+  width: 50%;
+  margin: auto;
+  position: relative;
+}
+.fe-con .h-con h1 {
+  font-size: 80px;
+  color: rgba(7, 5, 111, 0.732);
+}
+.fe-con .h-con p {
+  width: 700px;
+  font-size: 45px;
+  color: white;
+  position: absolute;
+  top: 50px;
+}/*# sourceMappingURL=style.css.map */
