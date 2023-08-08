@@ -4,15 +4,18 @@
         position: relative;
     } */
     *{
-       visibility: hidden; 
+       /* visibility: none;  */
+       margin: 0;
+       padding: 0;
+        visibility: hidden;
     }
     header{
-        width: 100%;
+        width: 400px;;
         height: 50px;
         background: red;
         visibility: visible;
     }
     nav{
-        visibility: hidden;
+        
     }
   }
