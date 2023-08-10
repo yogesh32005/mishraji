@@ -1,65 +1,195 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
-    <!-- <link rel="stylesheet" href="scss/style.css"> -->
-    <link rel="stylesheet" href="style2.css">
-</head>
-<body>
-    <header class="col-3">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tmplate</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://kit.fontawesome.com/yourcode.js" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+      *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+}
+body{
+    /* background: black; */
+}
+nav{
+    width: 100%;
+    height: 80px;
+    background: rgb(17, 125, 202);
+    z-index: 1;
+    /* display: flex; */
+}
+.logo{
+    font-size: 40px;
+    font-weight: bold;
+    color: white;
+    line-height: 80px;
+    padding: 0 0 0 80px;
+}
+a{
+    color: rgb(250, 249, 249);
+    padding: 7px 13px;
+    border-radius: 4px;
+}
+ul{
+    list-style: none;
+    float: right;
+}
+li{
+    display: inline;
+    line-height: 80px;
+    font-size: 20px;
+    font-weight: bold;
+    color: wheat;
+    padding: 0 10px;
+    /* flex-wrap: wrap; */
+    /* flex-direction: row; */
+}
+.btn{
+    font-size: 40px;
+    float: right;
+    padding: 16px 20px;
+    color: white;
+    /* visibility: hidden; */
+    display: none;
+    cursor: pointer;
+}
+#check{
+    display: none;
+}
+/* .check-btn{
+    color: red;
+    background: wheat; 
+    font-size: 50px;
+    float: right; 
+    padding: 50px;
+    border: 2px solid red;
+} */
+a.active,a:hover{
+    background-color: rgb(67, 197, 186);
+}
+@media only screen and (max-width: 900px) {
+    body {
+      background-color: lightblue;
+    }
+    .logo{
+        font-size: 30px;
+        padding-left: 30px;
+    }
+    .btn{
+        /* display: block; */
+    }
+    li{
+        /* display: block; */
+        padding: 0 2px;
+        font-size: 18px;
 
-        <nav>
-            <span><a href="#logo" id="logo"><img src="photo/logo-dark.svg" alt="logo"></a></span>
-            <ul>
-                <li class="list-item"><a href="">Home</a></li>
-                <li class="list-item"><a href="">Features</a></li>
-                <li class="list-item"><a href="">Pages</a></li>
-                <li class="list-item"><a href="">Support</a></li>
-            </ul>
-            <div class="sign">
-                <a href="" class="sign-btn">Sign In</a>
-                <a href="" class="sign-btn s-up">Sign Up</a>
-                <a href="" class="moon"></a>
-            </div>
-        </nav>
-    </header>
-    <!-- <main>
-        <div class="contenar">
-            <div class="front">
-                <div class="con-left">
-                    <div>
-                        <span class="con-li"> Tailwind Template for Startups</span>
-                        <h1>Digital Solutions for Your Startup</h1>
-                        <p>Handcrafted Tailwind CSS template for your next - Startup, Business,     Agency or SaaS Website. Comes with refreshing design and everything you     need to kickstart your next web project.</p>
-                    </div>
-                   <div class="st-btn">
-                        <a href="">Get Started</a>
-                        <a href="" class="ho-btn">How it Work</a>
-                   </div>
-                </div>
-                <div class="con-right">
-                    <div class="bgim">
-                        <img id="img1" src="photo/image-2.jpg" alt="img">
-                        <img id="img2" src="photo/image-1.jpg" alt="">
-                    </div>
-                </div>
-            </div>
-            
+    }
+  }
+  @media only screen and (max-width: 600px) {
+    body {
+      background-color: lightblue;
+    }
+    .btn{
+        display: block;
+    }
+    ul{
+        position: fixed;
+        top: -100%;
+        /* left: -100%; */
+        width: 100%;
+        height: 100vh;
+        background-color: blueviolet;
+        /* display: block; */
+        transition: all .5s;
+    }
+    li{
+        display: block;
+        /* margin: auto; */
+        text-align: center;
+    }
+    a.active,a:hover{
+        background: none;
+        color: white;
+    }
+    #check:checked ~ ul{
+        top: 80px;
+    }
+  }
+    </style>
+    
+  </head>
+  <body>
+    <header>
+      <nav>
+          <input type="checkbox" name="check" id="check">
+          <label for="check" class="btn">
+              <i class="fa fa-bars"></i>
+          </label>
+          <label for="" class="logo">SAZZU</label>
+          <ul>
+              <li><a href="#" class="active">HOME</a></li>
+              <li><a href="">About</a></li>
+              <li><a href="">More</a></li>
+              <li><a href="">Contact</a></li>
+              <li><a href="">Start</a></li>
+          </ul>
+      </nav>
+  </header>
+    <main>
+      <div class="contenar">
+        <div class="con-text">
+          <h2 id="about">Start something that matters</h2>
+          <p>Stop wasting valuable time with projects that just isn't you.</p>
+          <a href="#">Learn More and Start Today</a>
         </div>
-        <div id="features">
-            <div class="fe-con">
-                <div class="h-con">
-                    <h1>FEATURES</h1>
-                <p>Our Unique & Awesome Core Features</p>
-                </div>
-            </div>
+      </div>
+      <div class="about-con">
+        <h2>ABOUT THE COMPANY</h2>
+        <p class="dd">Key features of our company</p>
+        <div class="about">
+          <div class="content-item">
+            <img src="image/favicon144.png" alt="dddd" width="80px" />
+            <h3>Responsive</h3>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis
+              voluptatum dolor nulla harum neque similique asperiores unde
+            </p>
+          </div>
+          <div class="content-item">
+            <img src="image/favicon144.png" alt="dddd" width="80px" />
+            <h3>Passion</h3>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis
+              voluptatum dolor nulla harum neque similique asperiores unde
+            </p>
+          </div>
+          <div class="content-item">
+            <img src="image/favicon144.png" alt="dddd" width="80px" />
+            <h3>Design</h3>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis
+              voluptatum dolor nulla harum neque similique asperiores unde
+            </p>
+          </div>
+          <div class="content-item">
+            <img src="image/favicon144.png" alt="dddd" width="80px" />
+            <h3>Support</h3>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis
+              voluptatum dolor nulla harum neque similique asperiores unde
+            </p>
+          </div>
         </div>
-    </main> -->
-<!-- <footer>Lorem ipsum dolor sit amet consectetur    adipisicing elit. Nobiillum  
-     <div class="nim"></div>voluptatum, cupiditate veritatis praesentium porro, voluptatibus vitae possimus, earum dignissimos sequi! Quod molestias necessitatibus suscipit voluptatibus a iste fugit sequi distinctio, ipsum nisi dolores. Sunt voluptas omnis nam, corporis doloribus ducimus consequuntur accusantium dolore, incidunt deleniti ea! Numquam maiores dolore voluptatum consectetur perferendis illum minima laudantium harum tempore deleniti dolorum iure quod, quae quisquam deserunt autem fugiat et itaque. Fuga commodi quam hic ab molestias dolore natus voluptatum, expedita recusandae tempore repellendus voluptas aut fugiat sapiente laborum ipsa eius quo sint harum quasi dolorum tempora voluptatem porro reprehenderit. Libero, eveniet eligendi! Tempora voluptatum consectetur vel odio a deleniti ducimus obcaecati quisquam nisi totam soluta similique adipisci aperiam tempore sed ullam corporis reiciendis unde, incidunt cumque dolor nihil optio. Est qui at quos accusamus deserunt iure sequi nobis consectetur quisquam architecto fugiat, perferendis nam quidem saepe nisi unde tenetur. Odit recusandae rerum corporis repudiandae asperiores qui, at accusamus, sequi repellat porro consequuntur totam minus sed quod dicta ea, iste tempora voluptatibus ipsum quibusdam! Architecto veritatis minus itaque? Sequi dolores eum voluptatem enim mollitia suscipit alias eveniet amet neque, exercitationem, ipsa repudiandae sint vel praesentium et cum fugit officiis corporis laborum quidem totam? Aspernatur consequuntur suscipit fugit, illum minima tempora aut voluptatum corrupti accusantium laudantium velit. Sed minima dicta dolorum repudiandae sapiente blanditiis. Excepturi magnam nemo at quia eveniet repellat rem hic facilis doloribus nobis vero, mollitia debitis, aliquid praesentium eum laboriosam accusantium dicta deleniti nisi odit! Amet modi, magnam asperiores inventore perferendis voluptatem? Hic omnis dolorem fugit quo odit cupiditate sit reiciendis porro ab, ducimus voluptates velit error aliquid. Quia unde aspernatur, consequatur soluta consectetur enim commodi quam itaque doloribus sit deserunt repellat laboriosam autem molestiae distinctio, est quas quisquam provident tempore quo, animi earum inventore? Ducimus dolore nostrum, vitae voluptatem aspernatur sit quia. Sequi iste ipsa dolorem quia illum dignissimos, totam molestiae inventore eaque obcaecati officia reprehenderit maiores dolor voluptate qui soluta. Perferendis, voluptates in nam repellat nihil repudiandae iusto nulla excepturi libero praesentium vero et aspernatur. Corrupti unde accusantium impedit ut sed quos, ducimus perferendis assumenda necessitatibus veritatis eveniet sit, saepe consequuntur, omnis repudiandae voluptate delectus cumque! Vero ratione ut, eos aperiam dolore odit totam ducimus commodi magnam quam et? Sit commodi odio, optio distinctio quos eum eveniet, tenetur accusamus alias pariatur doloribus ullam amet temporibus. Reiciendis cumque magnam suscipit! Numquam accusantium quae rem aperiam nulla nobis est maxime aspernatur recusandae soluta totam ullam repellat officia culpa vero saepe, repellendus odio explicabo quidem voluptates! Perferendis totam enim possimus? Deleniti, ad? Ut, doloribus nemo molestias laboriosam earum hic fugit quam cum corporis quaerat veritatis quod impedit, explicabo eos blanditiis et. Doloremque repellendus nobis eligendi commodi nam assumenda beatae fugiat facere architecto, saepe ipsam similique illo ullam molestiae ut dolore laborum minima aperiam corporis neque ex voluptate. Necessitatibus alias similique quam accusamus veniam optio asperiores sequi sint deleniti reiciendis iste id, distinctio animi neque, maxime totam harum laudantium modi dolor ea libero. Doloremque est incidunt minima dolor officiis consequuntur, ad, similique aut, nostrum debitis magni a saepe placeat animi dignissimos ratione! Voluptate, culpa. Atque corporis ad excepturi? Esse, praesentium quis, labore, odio minima hic nihil ipsum inventore explicabo voluptates minus facilis culpa dolore. Facere dolorem rem consequatur quidem ullam consequuntur, nulla aperiam et! Iste vero sint earum, quas adipisci dolor ut asperiores similique repudiandae, sit saepe libero repellendus ducimus magnam, cupiditate consequuntur unde quibusdam odio voluptatum dolores eveniet facere reiciendis molestias error! Culpa veniam enim neque dolorem cumque maiores repellat earum nulla suscipit id ipsum eveniet cum nihil voluptatem, molestias eos. Sit repellat, accusantium repellendus aperiam ipsum ut, voluptate autem mollitia distinctio quam molestias eaque totam quas veritatis placeat quae illum eos eveniet officia facere nobis, esse sequi repudiandae. Deleniti libero recusandae corporis dolorum, ducimus illum eligendi molestiae perferendis sed. Laborum, voluptates expedita fugit ducimus blanditiis voluptatibus nisi, neque fugiat accusamus ipsa culpa rem, nemo hic! Officiis sunt natus culpa nam, repellendus assumenda quis obcaecati asperiores ullam repudiandae numquam itaque nemo unde molestiae enim praesentium optio eveniet, aut eos est accusamus vel? Totam harum perferendis sint, sapiente nesciunt officiis vel facere porro eligendi rerum similique dolores quidem fuga voluptas dolorum ipsa est minima nulla natus! Magni tenetur ipsum est reiciendis non hic placeat quasi dolore facilis blanditiis, voluptates provident quaerat? Eius eum pariatur sunt recusandae non expedita debitis iure, doloremque reiciendis, amet aspernatur obcaecati nisi. Velit laudantium, ab consectetur reiciendis aspernatur nam pariatur cumque delectus provident dignissimos eaque officiis ad esse facere aut excepturi debitis officia error ipsam rerum. Laboriosam accusantium soluta eaque, a doloremque alias deserunt odio repudiandae saepe eveniet fugiat illum nemo vero corrupti, odit quas ut nobis error iusto officiis placeat! Blanditiis libero aut cumque vel nam quasi est laborum exercitationem sit repellat hic totam, nulla corporis a facilis deleniti non reprehenderit maxime? Non exercitationem nemo enim distinctio voluptatibus maxime saepe, a eligendi fugit eaque aspernatur dolorum, doloremque cumque adipisci minus repellendus explicabo autem voluptatem culpa ex blanditiis quaerat? Eligendi, fugit maiores obcaecati debitis deleniti repudiandae nostrum laboriosam rerum at, animi exercitationem. Labore similique dolor numquam esse perspiciatis deleniti illum porro aut commodi delectus itaque accusantium magnam impedit, quo quos autem veritatis beatae ut optio repellat ex harum. Nesciunt officia quos nostrum. Incidunt a aspernatur nostrum sint consectetur necessitatibus, debitis ut deserunt, fugiat modi quisquam, corrupti aut optio cum facere recusandae! Hic in eligendi velit voluptates, aut repellat est nam doloribus sed vero quidem doloremque, nihil asperiores. Incidunt reiciendis blanditiis dolores ut quod. Veritatis, mollitia neque cum dolorum, porro, odit aliquid illo adipisci consequuntur qui officia. Molestiae enim labore necessitatibus recusandae nobis cumque incidunt! Inventore esse quibusdam, numquam veritatis sit iste ratione deserunt quia hic accusamus delectus fugit rem sed id sapiente cumque iure suscipit natus itaque tenetur dolor rerum commodi! Eum nisi eius, ab, commodi vel quasi provident nihil odio consequatur possimus dicta hic illo cum quam voluptatum corporis molestiae ducimus aut repellat adipisci similique minima at tempora! Rerum dolore, quidem voluptatibus sit non odit velit. Nam quod aliquid, obcaecati non mollitia sed deleniti. Odio, ad nobis.
-
-    </footer> -->
-</body>
+      </div>
+      <div class="know">
+        
+      </div>
+    </main>
+  </body>
 </html>
