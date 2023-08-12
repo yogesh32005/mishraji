@@ -130,7 +130,7 @@ a.active,a:hover{
         background: white;
     }
     #about{
-        padding: 0px;
+        padding-bottom: 5px;
     }
     
   }
@@ -166,3 +166,4 @@ a.active,a:hover{
 .con-text a:hover{
     background: white;
 }
+ 
