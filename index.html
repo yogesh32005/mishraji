@@ -80,88 +80,47 @@
         }
         
         .photo-gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 20px;
+            display: flex;
+            justify-content: center;
             margin: 40px 0;
         }
         
         .photo-frame {
-            width: 100%;
-            height: 220px;
+            width: 400px;
+            height: 400px;
             border-radius: 15px;
             overflow: hidden;
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-            transition: transform 0.4s ease, box-shadow 0.4s ease;
             position: relative;
             opacity: 0;
-            animation: fadeInUp 1s ease forwards;
-            animation-delay: calc(0.2s * var(--index));
+            transform: scale(0.8) rotate(-10deg);
+            animation: zoomInRotate 1.5s ease forwards 1.2s;
         }
         
-        .photo-frame:hover {
-            transform: scale(1.08) rotate(2deg);
-            box-shadow: 0 12px 30px rgba(255, 107, 129, 0.4);
-        }
+        
         
         .photo-placeholder {
             width: 100%;
             height: 100%;
-            background: linear-gradient(45deg, #ff9a9e, #ffeaa7);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 3.5rem;
-            transition: background 0.5s ease;
+            position: relative;
+            overflow: hidden;
         }
         
-        .photo-frame:hover .photo-placeholder {
-            background: linear-gradient(45deg, #fd79a8, #ffeb3b);
-        }
-        
-        .photo-caption {
-            position: absolute;
-            bottom: 0;
+        .photo-placeholder img {
             width: 100%;
-            background: rgba(0, 0, 0, 0.75);
-            color: white;
-            padding: 12px;
-            text-align: center;
-            font-size: 1rem;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.4s ease, transform 0.4s ease;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s ease;
         }
         
-        .photo-frame:hover .photo-caption {
-            opacity: 1;
-            transform: translateY(0);
+        .photo-frame:hover .photo-placeholder img {
+            transform: scale(1.05);
         }
         
-        .message-section {
-            background: rgba(255, 138, 148, 0.15);
-            padding: 30px;
-            border-radius: 20px;
-            margin: 40px 0;
-            opacity: 0;
-            animation: fadeInUp 1s ease forwards 1.2s;
-        }
         
-        .message-section h2 {
-            font-family: 'Dancing Script', cursive;
-            font-size: 3rem;
-            color: #ff6b81;
-            margin-bottom: 20px;
-            text-align: center;
-        }
         
-        .message-text {
-            line-height: 1.9;
-            font-size: 1.2rem;
-            text-align: center;
-            color: #4a2c25;
-        }
+       
         
         .interactive-section {
             display: flex;
@@ -173,7 +132,7 @@
             animation: fadeInUp 1s ease forwards 1.4s;
         }
         
-        .reasons-btn, .wish-btn, .music-toggle {
+        .reasons-btn, .wish-btn {
             background: linear-gradient(to right, #ff6b81, #ff8b94);
             color: white;
             border: none;
@@ -187,21 +146,10 @@
             box-shadow: 0 6px 20px rgba(255, 107, 129, 0.5);
         }
         
-        .music-toggle {
-            background: linear-gradient(to right, #6b7280, #a0aec0);
-            box-shadow: 0 6px 20px rgba(107, 114, 128, 0.5);
-        }
-        
         .reasons-btn:hover, .wish-btn:hover {
             transform: translateY(-4px) scale(1.05);
             box-shadow: 0 10px 25px rgba(255, 107, 129, 0.7);
             background: linear-gradient(to right, #ff4757, #ff6b81);
-        }
-        
-        .music-toggle:hover {
-            transform: translateY(-4px) scale(1.05);
-            box-shadow: 0 10px 25px rgba(107, 114, 128, 0.7);
-            background: linear-gradient(to right, #4a5568, #718096);
         }
         
         footer {
@@ -336,44 +284,6 @@
             animation: heartBeat 2s infinite;
         }
         
-        .countdown-section {
-            text-align: center;
-            margin: 40px 0;
-            background: rgba(255, 138, 148, 0.15);
-            padding: 30px;
-            border-radius: 20px;
-            opacity: 0;
-            animation: fadeInUp 1s ease forwards 1.3s;
-        }
-        
-        .countdown-section h2 {
-            font-family: 'Dancing Script', cursive;
-            font-size: 3rem;
-            color: #ff6b81;
-            margin-bottom: 20px;
-        }
-        
-        .countdown-timer {
-            font-size: 1.8rem;
-            color: #4a2c25;
-            display: flex;
-            justify-content: center;
-            gap: 25px;
-            flex-wrap: wrap;
-        }
-        
-        .countdown-item {
-            background: white;
-            padding: 12px 25px;
-            border-radius: 15px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
-            transition: transform 0.3s ease;
-        }
-        
-        .countdown-item:hover {
-            transform: scale(1.1);
-        }
-        
         @keyframes fall {
             0% { transform: translateY(-10vh) rotate(0deg); opacity: 1; }
             100% { transform: translateY(110vh) rotate(720deg); opacity: 0; }
@@ -425,59 +335,17 @@
             100% { opacity: 1; }
         }
         
-        @keyframes modalAppear {
-            0% { transform: scale(0.7) rotate(-5deg); opacity: 0; }
-            100% { transform: scale(1) rotate(0deg); opacity: 1; }
+        @keyframes zoomInRotate {
+            0% { opacity: 0; transform: scale(0.8) rotate(-10deg); }
+            100% { opacity: 1; transform: scale(1) rotate(0deg); }
         }
         
-        .memory-section {
-            margin: 40px 0;
-            text-align: center;
-            opacity: 0;
-            animation: fadeInUp 1s ease forwards 1.5s;
-        }
-        
-        .memory-quiz {
-            background: white;
-            padding: 25px;
-            border-radius: 20px;
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
-            margin-top: 25px;
-        }
-        
-        .quiz-question {
-            font-size: 1.3rem;
-            margin-bottom: 20px;
-            color: #4a2c25;
-        }
-        
-        .quiz-options {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 15px;
-            justify-content: center;
-            margin-bottom: 25px;
-        }
-        
-        .quiz-option {
-            background: rgba(255, 138, 148, 0.2);
-            padding: 12px 25px;
-            border-radius: 50px;
-            cursor: pointer;
-            transition: all 0.4s ease;
-            color: #4a2c25;
-        }
-        
-        .quiz-option:hover {
-            background: rgba(255, 138, 148, 0.4);
-            transform: scale(1.1) rotate(3deg);
-        }
-        
-        .quiz-feedback {
-            font-weight: bold;
-            min-height: 28px;
-            margin-top: 15px;
-            color: #4a2c25;
+        @keyframes shake {
+            0% { transform: translateX(0); }
+            25% { transform: translateX(-5px) rotate(-2deg); }
+            50% { transform: translateX(5px) rotate(2deg); }
+            75% { transform: translateX(-3px) rotate(-1deg); }
+            100% { transform: translateX(0) rotate(0deg); }
         }
         
         @media (max-width: 768px) {
@@ -486,11 +354,8 @@
             }
             
             .photo-frame {
-                height: 180px;
-            }
-            
-            .message-text {
-                font-size: 1.1rem;
+                width: 300px;
+                height: 300px;
             }
             
             .modal-content {
@@ -510,14 +375,9 @@
                 font-size: 1rem;
             }
             
-            .reasons-btn, .wish-btn, .music-toggle {
+            .reasons-btn, .wish-btn {
                 padding: 15px 30px;
                 font-size: 1.1rem;
-            }
-            
-            .countdown-timer {
-                font-size: 1.4rem;
-                gap: 15px;
             }
         }
         
@@ -526,12 +386,9 @@
                 font-size: 2.2rem;
             }
             
-            .photo-gallery {
-                grid-template-columns: 1fr;
-            }
-            
             .photo-frame {
-                height: 150px;
+                width: 250px;
+                height: 250px;
             }
             
             .modal-content {
@@ -540,10 +397,6 @@
             
             .modal-title {
                 font-size: 1.8rem;
-            }
-            
-            .countdown-item {
-                padding: 10px 20px;
             }
             
             .container {
@@ -565,7 +418,7 @@
                 <i class="fas fa-heart"></i>
             </div>
             <p class="modal-text">
-                To the Most Amazing Woman<br><br>
+                To the Most Amazing Girl<br><br>
                 On this special day, I want to remind you how incredibly loved you are. Your smile brightens my darkest days, your laughter is my favorite melody, and your love is the greatest gift I've ever received. You make every day an adventure worth cherishing, and I'm so grateful to walk through life with you by my side.
                 <br><br>
                 Today is all about celebrating you - the wonderful, beautiful, kind-hearted person you are. May your birthday be as radiant as your smile and as joyful as the happiness you bring to others.
@@ -602,7 +455,7 @@
     
     <div class="container">
         <header>
-            <h1 id="typing-title">Happy Birthday, My Love!</h1>
+            <h1 id="typing-title">Happy Birthday, My Sweet Heart!</h1>
             <p class="subtitle">Every day with you is a gift I cherish</p>
             <div class="heart-divider">
                 <i class="fas fa-heart"></i>
@@ -612,75 +465,26 @@
         </header>
         
         <div class="photo-gallery">
-            <div class="photo-frame" style="--index: 1;">
+            <div class="photo-frame">
                 <div class="photo-placeholder">
-                    <i class="fas fa-heart"></i>
+                    <img src="./nidhi.jpg" alt="Our Special Moment">
                 </div>
-                <div class="photo-caption">Our First Date</div>
-            </div>
-            <div class="photo-frame" style="--index: 2;">
-                <div class="photo-placeholder">
-                    <i class="fas fa-kiss-wink-heart"></i>
-                </div>
-                <div class="photo-caption">Our First Kiss</div>
-            </div>
-            <div class="photo-frame" style="--index: 3;">
-                <div class="photo-placeholder">
-                    <i class="fas fa-glass-cheers"></i>
-                </div>
-                <div class="photo-caption">Our Celebration</div>
+                <div class="photo-caption">Our Special Moment</div>
             </div>
         </div>
         
-        <section class="message-section">
-            <h2>To the Most Amazing Woman</h2>
-            <p class="message-text">
-                On this special day, I want to remind you how incredibly loved you are. Your smile brightens my darkest days, your laughter is my favorite melody, and your love is the greatest gift I've ever received. You make every day an adventure worth cherishing, and I'm so grateful to walk through life with you by my side.
-            </p>
-            <p class="message-text">
-                Today is all about celebrating you - the wonderful, beautiful, kind-hearted person you are. May your birthday be as radiant as your smile and as joyful as the happiness you bring to others.
-            </p>
-        </section>
-        
-        <section class="countdown-section">
-            <h2>Until Your Next Birthday</h2>
-            <div class="countdown-timer" id="countdown-timer">
-                <div class="countdown-item"><span id="days">0</span> Days</div>
-                <div class="countdown-item"><span id="hours">0</span> Hours</div>
-                <div class="countdown-item"><span id="minutes">0</span> Minutes</div>
-                <div class="countdown-item"><span id="seconds">0</span> Seconds</div>
-            </div>
-        </section>
-        
         <section class="interactive-section">
-            <button class="music-toggle" id="music-toggle">
-                <i class="fas fa-music"></i> Toggle Music
+            <button class="wish-btn" id="wish-btn">
+                <i class="fas fa-star"></i> Make a Wish
             </button>
             <button class="reasons-btn" id="reasons-btn">
                 <i class="fas fa-heart"></i> Reasons Why I Love You
             </button>
-            <button class="wish-btn" id="wish-btn">
-                <i class="fas fa-star"></i> Make a Wish
-            </button>
-        </section>
-        
-        <section class="memory-section">
-            <h2>Our Special Memories</h2>
-            <div class="memory-quiz">
-                <p class="quiz-question">Where did we go on our first date?</p>
-                <div class="quiz-options">
-                    <div class="quiz-option" data-correct="true">Italian Restaurant</div>
-                    <div class="quiz-option">Movie Theater</div>
-                    <div class="quiz-option">Beach Walk</div>
-                    <div class="quiz-option">Coffee Shop</div>
-                </div>
-                <p class="quiz-feedback" id="quiz-feedback"></p>
-            </div>
         </section>
     </div>
     
     <footer>
-        <p>Made with <i class="fas fa-heart" style="color: #ff6b81;"></i> for you on your special day</p>
+        <p>Created by Mishra Ji <i class="fas fa-heart" style="color: #ff6b81;"></i> for you on your special day</p>
     </footer>
 
     <script>
@@ -803,73 +607,11 @@
             if (event.target === wishModal) closeWishModal();
         });
         
-        // Memory quiz functionality
-        const quizOptions = document.querySelectorAll('.quiz-option');
-        const quizFeedback = document.getElementById('quiz-feedback');
+        // Audio playback
+        const audio = new Audio('./audio.m4a');
+        audio.loop = true; // Loop the audio for continuous playback
         
-        quizOptions.forEach(option => {
-            option.addEventListener('click', () => {
-                const isCorrect = option.getAttribute('data-correct') === 'true';
-                quizFeedback.textContent = isCorrect 
-                    ? 'That\'s right, my love! ❤️' 
-                    : 'Not quite! It was actually the Italian Restaurant.';
-                quizFeedback.style.color = isCorrect ? '#00b894' : '#ff6b81';
-                
-                quizOptions.forEach(opt => {
-                    opt.style.pointerEvents = 'none';
-                    if (opt.getAttribute('data-correct') === 'true') {
-                        opt.style.background = 'rgba(0, 184, 148, 0.4)';
-                    }
-                });
-            });
-        });
-        
-        // Music player functionality
-        const musicToggle = document.getElementById('music-toggle');
-        const audio = new Audio('https://www.bensound.com/bensound-music/bensound-happybirthday.mp3');
-        let isPlaying = false;
-        
-        musicToggle.addEventListener('click', () => {
-            if (isPlaying) {
-                audio.pause();
-                musicToggle.innerHTML = '<i class="fas fa-music"></i> Play Music';
-            } else {
-                audio.play();
-                musicToggle.innerHTML = '<i class="fas fa-pause"></i> Pause Music';
-            }
-            isPlaying = !isPlaying;
-        });
-        
-        // Countdown timer
-        function startCountdown() {
-            const countdownDate = new Date();
-            countdownDate.setFullYear(countdownDate.getFullYear() + 1, countdownDate.getMonth(), countdownDate.getDate());
-            
-            const daysEl = document.getElementById('days');
-            const hoursEl = document.getElementById('hours');
-            const minutesEl = document.getElementById('minutes');
-            const secondsEl = document.getElementById('seconds');
-            
-            const updateCountdown = () => {
-                const now = new Date();
-                const timeLeft = countdownDate - now;
-                
-                const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
-                const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
-                const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
-                
-                daysEl.textContent = days;
-                hoursEl.textContent = hours;
-                minutesEl.textContent = minutes;
-                secondsEl.textContent = seconds;
-            };
-            
-            updateCountdown();
-            setInterval(updateCountdown, 1000);
-        }
-        
-        // Initialize the page
+        // Attempt to play audio on page load
         window.addEventListener('load', () => {
             createHearts();
             createConfetti();
@@ -879,12 +621,18 @@
                 document.getElementById('typing-title').classList.add('typing');
             }, 1500);
             
-            // Add index to photo frames for staggered animation
-            document.querySelectorAll('.photo-frame').forEach((frame, index) => {
-                frame.style.setProperty('--index', index + 1);
+            // Try to play audio
+            audio.play().catch(error => {
+                console.log('Auto-play was blocked:', error);
+                // Fallback: Play audio on first user interaction
+                const playAudioOnInteraction = () => {
+                    audio.play().catch(err => console.log('Audio play failed:', err));
+                    document.removeEventListener('click', playAudioOnInteraction);
+                    document.removeEventListener('touchstart', playAudioOnInteraction);
+                };
+                document.addEventListener('click', playAudioOnInteraction);
+                document.addEventListener('touchstart', playAudioOnInteraction);
             });
-            
-            startCountdown();
         });
     </script>
 </body>
