@@ -15,165 +15,205 @@
         
         body {
             font-family: 'Raleway', sans-serif;
-            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
-            color: #5a3e36;
+            background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 50%, #ffd1ff 100%);
+            color: #4a2c25;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
             padding: 20px;
             overflow-x: hidden;
+            position: relative;
+            background-attachment: fixed;
+            background-size: cover;
         }
         
         .container {
             max-width: 900px;
             width: 100%;
-            background: rgba(255, 255, 255, 0.9);
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-            padding: 30px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 25px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+            padding: 40px;
             margin-top: 20px;
             position: relative;
-            overflow: hidden;
+            opacity: 0;
+            transform: translateY(50px);
+            animation: fadeInUp 1s ease forwards 0.5s;
         }
         
         header {
             text-align: center;
             margin-bottom: 30px;
-            position: relative;
         }
         
         h1 {
             font-family: 'Dancing Script', cursive;
-            font-size: 4rem;
-            color: #e84393;
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
-            animation: pulse 2s infinite;
+            font-size: 4.5rem;
+            color: #ff6b81;
+            margin-bottom: 15px;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.15);
+            display: inline-block;
+            animation: pulseGlow 2s infinite;
+        }
+        
+        .typing {
+            border-right: 3px solid #ff6b81;
+            white-space: nowrap;
+            overflow: hidden;
+            animation: typing 4s steps(40, end), blink-caret 0.8s step-end infinite;
         }
         
         .subtitle {
-            font-size: 1.2rem;
-            color: #fd79a8;
-            margin-bottom: 20px;
+            font-size: 1.3rem;
+            color: #ff8b94;
+            margin-bottom: 25px;
+            opacity: 0;
+            animation: fadeIn 1s ease forwards 1s;
         }
         
         .heart-divider {
-            font-size: 2rem;
-            color: #e84393;
-            margin: 20px 0;
+            font-size: 2.5rem;
+            color: #ff6b81;
+            margin: 25px 0;
+            animation: heartBeat 2s infinite;
         }
         
         .photo-gallery {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin: 30px 0;
-            flex-wrap: wrap;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            margin: 40px 0;
         }
         
         .photo-frame {
-            width: 200px;
-            height: 200px;
-            border-radius: 10px;
+            width: 100%;
+            height: 220px;
+            border-radius: 15px;
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-            transition: transform 0.3s ease;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
             position: relative;
+            opacity: 0;
+            animation: fadeInUp 1s ease forwards;
+            animation-delay: calc(0.2s * var(--index));
         }
         
         .photo-frame:hover {
-            transform: scale(1.05);
+            transform: scale(1.08) rotate(2deg);
+            box-shadow: 0 12px 30px rgba(255, 107, 129, 0.4);
         }
         
         .photo-placeholder {
             width: 100%;
             height: 100%;
-            background: linear-gradient(45deg, #fd79a8, #fdcb6e);
+            background: linear-gradient(45deg, #ff9a9e, #ffeaa7);
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
-            font-size: 3rem;
+            font-size: 3.5rem;
+            transition: background 0.5s ease;
+        }
+        
+        .photo-frame:hover .photo-placeholder {
+            background: linear-gradient(45deg, #fd79a8, #ffeb3b);
+        }
+        
+        .photo-caption {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.75);
+            color: white;
+            padding: 12px;
+            text-align: center;
+            font-size: 1rem;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.4s ease, transform 0.4s ease;
+        }
+        
+        .photo-frame:hover .photo-caption {
+            opacity: 1;
+            transform: translateY(0);
         }
         
         .message-section {
-            background: rgba(252, 182, 159, 0.1);
-            padding: 25px;
-            border-radius: 15px;
-            margin: 30px 0;
-            position: relative;
+            background: rgba(255, 138, 148, 0.15);
+            padding: 30px;
+            border-radius: 20px;
+            margin: 40px 0;
+            opacity: 0;
+            animation: fadeInUp 1s ease forwards 1.2s;
         }
         
         .message-section h2 {
             font-family: 'Dancing Script', cursive;
-            font-size: 2.5rem;
-            color: #e84393;
-            margin-bottom: 15px;
+            font-size: 3rem;
+            color: #ff6b81;
+            margin-bottom: 20px;
             text-align: center;
         }
         
         .message-text {
-            line-height: 1.8;
-            font-size: 1.1rem;
+            line-height: 1.9;
+            font-size: 1.2rem;
             text-align: center;
+            color: #4a2c25;
         }
         
         .interactive-section {
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 20px;
-            margin: 30px 0;
+            gap: 25px;
+            margin: 40px 0;
+            opacity: 0;
+            animation: fadeInUp 1s ease forwards 1.4s;
         }
         
-        .reasons-btn {
-            background: linear-gradient(to right, #e84393, #fd79a8);
+        .reasons-btn, .wish-btn, .music-toggle {
+            background: linear-gradient(to right, #ff6b81, #ff8b94);
             color: white;
             border: none;
-            padding: 15px 30px;
-            font-size: 1.2rem;
+            padding: 18px 35px;
+            font-size: 1.3rem;
             border-radius: 50px;
             cursor: pointer;
-            transition: transform 0.3s, box-shadow 0.3s;
+            transition: transform 0.4s ease, box-shadow 0.4s ease, background 0.4s ease;
             font-family: 'Raleway', sans-serif;
             font-weight: 500;
-            box-shadow: 0 5px 15px rgba(232, 67, 147, 0.4);
+            box-shadow: 0 6px 20px rgba(255, 107, 129, 0.5);
         }
         
-        .reasons-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(232, 67, 147, 0.6);
+        .music-toggle {
+            background: linear-gradient(to right, #6b7280, #a0aec0);
+            box-shadow: 0 6px 20px rgba(107, 114, 128, 0.5);
         }
         
-        .wish-btn {
-            background: linear-gradient(to right, #0984e3, #00cec9);
-            color: white;
-            border: none;
-            padding: 15px 30px;
-            font-size: 1.2rem;
-            border-radius: 50px;
-            cursor: pointer;
-            transition: transform 0.3s, box-shadow 0.3s;
-            font-family: 'Raleway', sans-serif;
-            font-weight: 500;
-            box-shadow: 0 5px 15px rgba(9, 132, 227, 0.4);
-            margin-top: 20px;
+        .reasons-btn:hover, .wish-btn:hover {
+            transform: translateY(-4px) scale(1.05);
+            box-shadow: 0 10px 25px rgba(255, 107, 129, 0.7);
+            background: linear-gradient(to right, #ff4757, #ff6b81);
         }
         
-        .wish-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(9, 132, 227, 0.6);
+        .music-toggle:hover {
+            transform: translateY(-4px) scale(1.05);
+            box-shadow: 0 10px 25px rgba(107, 114, 128, 0.7);
+            background: linear-gradient(to right, #4a5568, #718096);
         }
         
         footer {
             text-align: center;
-            margin-top: 40px;
-            color: #fd79a8;
-            font-size: 1.1rem;
+            margin-top: 50px;
+            color: #ff8b94;
+            font-size: 1.2rem;
+            opacity: 0;
+            animation: fadeIn 1s ease forwards 1.6s;
         }
         
-        .hearts-container {
+        .hearts-container, .confetti-container {
             position: fixed;
             top: 0;
             left: 0;
@@ -185,13 +225,22 @@
         
         .heart {
             position: absolute;
-            font-size: 20px;
-            color: #e84393;
+            font-size: 25px;
+            color: #ff6b81;
             opacity: 0;
-            animation: fall 5s linear infinite;
+            animation: fall 6s linear infinite, colorChange 3s infinite;
         }
         
-        /* Popup Modal Styles */
+        .confetti {
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            background: linear-gradient(45deg, #ff9a9e, #ffeaa7);
+            border-radius: 3px;
+            opacity: 0;
+            animation: fall 4s linear infinite, rotate 2s linear infinite;
+        }
+        
         .modal {
             display: none;
             position: fixed;
@@ -199,157 +248,236 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.7);
+            background-color: rgba(0, 0, 0, 0.75);
             z-index: 1000;
             justify-content: center;
             align-items: center;
         }
         
         .modal-content {
-            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
-            padding: 40px;
-            border-radius: 20px;
-            max-width: 600px;
+            background: linear-gradient(135deg, #ff9a9e 0%, #ffd1ff 100%);
+            padding: 50px;
+            border-radius: 25px;
+            max-width: 650px;
             width: 90%;
             text-align: center;
-            position: relative;
-            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.3);
-            animation: modalAppear 0.5s ease-out;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            animation: modalAppear 0.6s ease-out;
         }
         
         .reasons-modal-content {
-            max-width: 700px;
+            max-width: 750px;
         }
         
         .close-btn {
             position: absolute;
-            top: 15px;
-            right: 15px;
-            font-size: 1.5rem;
-            color: #e84393;
+            top: 20px;
+            right: 20px;
+            font-size: 1.8rem;
+            color: #ff6b81;
             cursor: pointer;
-            transition: transform 0.3s;
+            transition: transform 0.4s ease, color 0.4s ease;
         }
         
         .close-btn:hover {
-            transform: scale(1.2);
+            transform: scale(1.3) rotate(90deg);
+            color: #ff4757;
         }
         
         .modal-title {
             font-family: 'Dancing Script', cursive;
-            font-size: 2.5rem;
-            color: #e84393;
-            margin-bottom: 20px;
+            font-size: 3rem;
+            color: #ff6b81;
+            margin-bottom: 25px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
         }
         
         .modal-text {
-            font-size: 1.2rem;
-            line-height: 1.6;
-            margin-bottom: 30px;
-            color: #5a3e36;
+            font-size: 1.3rem;
+            line-height: 1.7;
+            margin-bottom: 35px;
+            color: #4a2c25;
         }
         
         .modal-heart {
-            font-size: 3rem;
-            color: #e84393;
-            margin: 20px 0;
-            animation: pulse 1.5s infinite;
+            font-size: 3.5rem;
+            color: #ff6b81;
+            margin: 25px 0;
+            animation: pulseGlow 1.5s infinite;
         }
         
         .reasons-list {
             list-style: none;
             text-align: left;
-            margin: 20px 0;
+            margin: 25px 0;
         }
         
         .reasons-list li {
-            padding: 15px;
-            margin: 15px 0;
-            background: rgba(255, 255, 255, 0.7);
-            border-radius: 10px;
-            font-size: 1.1rem;
-            transition: transform 0.3s;
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin: 20px 0;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 15px;
+            font-size: 1.2rem;
+            transition: transform 0.4s ease, background 0.4s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
             display: flex;
             align-items: center;
         }
         
         .reasons-list li:hover {
-            transform: translateX(10px);
-            background: rgba(255, 255, 255, 0.9);
+            transform: translateX(15px) scale(1.02);
+            background: rgba(255, 255, 255, 1);
         }
         
         .reasons-list li i {
-            color: #e84393;
-            margin-right: 15px;
-            font-size: 1.5rem;
+            color: #ff6b81;
+            margin-right: 20px;
+            font-size: 1.8rem;
+            animation: heartBeat 2s infinite;
+        }
+        
+        .countdown-section {
+            text-align: center;
+            margin: 40px 0;
+            background: rgba(255, 138, 148, 0.15);
+            padding: 30px;
+            border-radius: 20px;
+            opacity: 0;
+            animation: fadeInUp 1s ease forwards 1.3s;
+        }
+        
+        .countdown-section h2 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3rem;
+            color: #ff6b81;
+            margin-bottom: 20px;
+        }
+        
+        .countdown-timer {
+            font-size: 1.8rem;
+            color: #4a2c25;
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+        
+        .countdown-item {
+            background: white;
+            padding: 12px 25px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s ease;
+        }
+        
+        .countdown-item:hover {
+            transform: scale(1.1);
         }
         
         @keyframes fall {
-            0% {
-                transform: translateY(-10vh) rotate(0deg);
-                opacity: 1;
-            }
-            100% {
-                transform: translateY(110vh) rotate(360deg);
-                opacity: 0;
-            }
+            0% { transform: translateY(-10vh) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(110vh) rotate(720deg); opacity: 0; }
         }
         
-        @keyframes pulse {
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        @keyframes pulseGlow {
+            0% { transform: scale(1); text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.15); }
+            50% { transform: scale(1.06); text-shadow: 3px 3px 8px rgba(255, 107, 129, 0.5); }
+            100% { transform: scale(1); text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.15); }
+        }
+        
+        @keyframes heartBeat {
             0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
+            25% { transform: scale(1.2); }
+            50% { transform: scale(1); }
+            75% { transform: scale(1.3); }
             100% { transform: scale(1); }
         }
         
+        @keyframes colorChange {
+            0% { color: #ff6b81; }
+            33% { color: #fd79a8; }
+            66% { color: #ff9a9e; }
+            100% { color: #ff6b81; }
+        }
+        
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+        
+        @keyframes blink-caret {
+            from, to { border-color: transparent; }
+            50% { border-color: #ff6b81; }
+        }
+        
+        @keyframes fadeInUp {
+            0% { opacity: 0; transform: translateY(50px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+        
         @keyframes modalAppear {
-            0% { transform: scale(0.8); opacity: 0; }
-            100% { transform: scale(1); opacity: 1; }
+            0% { transform: scale(0.7) rotate(-5deg); opacity: 0; }
+            100% { transform: scale(1) rotate(0deg); opacity: 1; }
         }
         
         .memory-section {
-            margin: 30px 0;
+            margin: 40px 0;
             text-align: center;
+            opacity: 0;
+            animation: fadeInUp 1s ease forwards 1.5s;
         }
         
         .memory-quiz {
             background: white;
-            padding: 20px;
-            border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            margin-top: 20px;
+            padding: 25px;
+            border-radius: 20px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+            margin-top: 25px;
         }
         
         .quiz-question {
-            font-size: 1.2rem;
-            margin-bottom: 15px;
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            color: #4a2c25;
         }
         
         .quiz-options {
             display: flex;
             flex-wrap: wrap;
-            gap: 10px;
+            gap: 15px;
             justify-content: center;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
         }
         
         .quiz-option {
-            background: rgba(253, 121, 168, 0.2);
-            padding: 10px 20px;
+            background: rgba(255, 138, 148, 0.2);
+            padding: 12px 25px;
             border-radius: 50px;
             cursor: pointer;
-            transition: all 0.3s;
+            transition: all 0.4s ease;
+            color: #4a2c25;
         }
         
         .quiz-option:hover {
-            background: rgba(253, 121, 168, 0.3);
-            transform: scale(1.05);
+            background: rgba(255, 138, 148, 0.4);
+            transform: scale(1.1) rotate(3deg);
         }
         
         .quiz-feedback {
             font-weight: bold;
-            min-height: 24px;
-            margin-top: 10px;
+            min-height: 28px;
+            margin-top: 15px;
+            color: #4a2c25;
         }
         
         @media (max-width: 768px) {
@@ -358,35 +486,75 @@
             }
             
             .photo-frame {
-                width: 150px;
-                height: 150px;
+                height: 180px;
             }
             
             .message-text {
-                font-size: 1rem;
+                font-size: 1.1rem;
             }
             
             .modal-content {
-                padding: 25px;
+                padding: 30px;
             }
             
             .modal-title {
-                font-size: 2rem;
+                font-size: 2.2rem;
             }
             
             .modal-text {
-                font-size: 1rem;
+                font-size: 1.1rem;
             }
             
             .reasons-list li {
-                padding: 10px;
+                padding: 15px;
                 font-size: 1rem;
+            }
+            
+            .reasons-btn, .wish-btn, .music-toggle {
+                padding: 15px 30px;
+                font-size: 1.1rem;
+            }
+            
+            .countdown-timer {
+                font-size: 1.4rem;
+                gap: 15px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            .photo-gallery {
+                grid-template-columns: 1fr;
+            }
+            
+            .photo-frame {
+                height: 150px;
+            }
+            
+            .modal-content {
+                padding: 20px;
+            }
+            
+            .modal-title {
+                font-size: 1.8rem;
+            }
+            
+            .countdown-item {
+                padding: 10px 20px;
+            }
+            
+            .container {
+                padding: 20px;
             }
         }
     </style>
 </head>
 <body>
     <div class="hearts-container" id="hearts-container"></div>
+    <div class="confetti-container" id="confetti-container"></div>
     
     <!-- Wish Popup Modal -->
     <div class="modal" id="wish-modal">
@@ -434,7 +602,7 @@
     
     <div class="container">
         <header>
-            <h1>Happy Birthday, My Love!</h1>
+            <h1 id="typing-title">Happy Birthday, My Love!</h1>
             <p class="subtitle">Every day with you is a gift I cherish</p>
             <div class="heart-divider">
                 <i class="fas fa-heart"></i>
@@ -444,20 +612,23 @@
         </header>
         
         <div class="photo-gallery">
-            <div class="photo-frame">
+            <div class="photo-frame" style="--index: 1;">
                 <div class="photo-placeholder">
                     <i class="fas fa-heart"></i>
                 </div>
+                <div class="photo-caption">Our First Date</div>
             </div>
-            <div class="photo-frame">
+            <div class="photo-frame" style="--index: 2;">
                 <div class="photo-placeholder">
                     <i class="fas fa-kiss-wink-heart"></i>
                 </div>
+                <div class="photo-caption">Our First Kiss</div>
             </div>
-            <div class="photo-frame">
+            <div class="photo-frame" style="--index: 3;">
                 <div class="photo-placeholder">
                     <i class="fas fa-glass-cheers"></i>
                 </div>
+                <div class="photo-caption">Our Celebration</div>
             </div>
         </div>
         
@@ -471,11 +642,23 @@
             </p>
         </section>
         
+        <section class="countdown-section">
+            <h2>Until Your Next Birthday</h2>
+            <div class="countdown-timer" id="countdown-timer">
+                <div class="countdown-item"><span id="days">0</span> Days</div>
+                <div class="countdown-item"><span id="hours">0</span> Hours</div>
+                <div class="countdown-item"><span id="minutes">0</span> Minutes</div>
+                <div class="countdown-item"><span id="seconds">0</span> Seconds</div>
+            </div>
+        </section>
+        
         <section class="interactive-section">
+            <button class="music-toggle" id="music-toggle">
+                <i class="fas fa-music"></i> Toggle Music
+            </button>
             <button class="reasons-btn" id="reasons-btn">
                 <i class="fas fa-heart"></i> Reasons Why I Love You
             </button>
-            
             <button class="wish-btn" id="wish-btn">
                 <i class="fas fa-star"></i> Make a Wish
             </button>
@@ -497,28 +680,48 @@
     </div>
     
     <footer>
-        <p>Made with <i class="fas fa-heart" style="color: #e84393;"></i> for you on your special day</p>
+        <p>Made with <i class="fas fa-heart" style="color: #ff6b81;"></i> for you on your special day</p>
     </footer>
 
     <script>
         // Create falling hearts
         function createHearts() {
             const heartsContainer = document.getElementById('hearts-container');
-            const heartCount = 30;
+            const heartCount = 40;
             
             for (let i = 0; i < heartCount; i++) {
                 const heart = document.createElement('div');
                 heart.innerHTML = '<i class="fas fa-heart"></i>';
                 heart.classList.add('heart');
-                
-                // Random positions and animation delays
                 heart.style.left = Math.random() * 100 + 'vw';
                 heart.style.animationDelay = Math.random() * 5 + 's';
-                heart.style.fontSize = (Math.random() * 20 + 10) + 'px';
-                
+                heart.style.fontSize = (Math.random() * 25 + 15) + 'px';
                 heartsContainer.appendChild(heart);
             }
         }
+        
+        // Create confetti
+        function createConfetti() {
+            const confettiContainer = document.getElementById('confetti-container');
+            const confettiCount = 80;
+            
+            for (let i = 0; i < confettiCount; i++) {
+                const confetti = document.createElement('div');
+                confetti.classList.add('confetti');
+                confetti.style.left = Math.random() * 100 + 'vw';
+                confetti.style.animationDelay = Math.random() * 4 + 's';
+                confetti.style.background = `hsl(${Math.random() * 360}, 80%, 70%)`;
+                confetti.style.width = (Math.random() * 10 + 5) + 'px';
+                confetti.style.height = (Math.random() * 10 + 5) + 'px';
+                confettiContainer.appendChild(confetti);
+            }
+        }
+        
+        // Parallax effect
+        window.addEventListener('scroll', () => {
+            const scrollPosition = window.pageYOffset;
+            document.body.style.backgroundPositionY = -(scrollPosition * 0.2) + 'px';
+        });
         
         // Modal functionality for reasons
         const reasonsModal = document.getElementById('reasons-modal');
@@ -526,11 +729,9 @@
         const closeReasonsModalBtn = document.getElementById('close-reasons-modal');
         const closeReasonsModalBtn2 = document.getElementById('close-reasons-modal-btn');
         
-        reasonsBtn.addEventListener('click', function() {
+        reasonsBtn.addEventListener('click', () => {
             reasonsModal.style.display = 'flex';
             document.body.style.overflow = 'hidden';
-            
-            // Create a burst of hearts from the button
             createHeartBurst(reasonsBtn);
         });
         
@@ -548,11 +749,9 @@
         const closeWishModalBtn = document.getElementById('close-wish-modal');
         const closeWishModalBtn2 = document.getElementById('close-wish-modal-btn');
         
-        wishBtn.addEventListener('click', function() {
+        wishBtn.addEventListener('click', () => {
             wishModal.style.display = 'flex';
             document.body.style.overflow = 'hidden';
-            
-            // Create a burst of hearts from the button
             createHeartBurst(wishBtn);
         });
         
@@ -566,38 +765,29 @@
         
         // Create heart burst animation
         function createHeartBurst(button) {
-            const burstCount = 15;
+            const burstCount = 20;
+            const buttonRect = button.getBoundingClientRect();
+            const buttonX = buttonRect.left + buttonRect.width / 2;
+            const buttonY = buttonRect.top + buttonRect.height / 2;
             
             for (let i = 0; i < burstCount; i++) {
                 const heart = document.createElement('div');
-                heart.innerHTML = '<i class="fas fa-heart" style="color: #e84393;"></i>';
+                heart.innerHTML = '<i class="fas fa-heart"></i>';
                 heart.style.position = 'absolute';
-                heart.style.fontSize = '20px';
+                heart.style.fontSize = (Math.random() * 15 + 15) + 'px';
                 heart.style.zIndex = '1000';
-                
-                const buttonRect = button.getBoundingClientRect();
-                const buttonX = buttonRect.left + buttonRect.width / 2;
-                const buttonY = buttonRect.top + buttonRect.height / 2;
-                
                 heart.style.left = buttonX + 'px';
                 heart.style.top = buttonY + 'px';
-                
+                heart.style.color = `hsl(${Math.random() * 60 + 330}, 80%, 60%)`;
                 document.body.appendChild(heart);
                 
-                // Animate hearts
                 const angle = Math.random() * Math.PI * 2;
-                const distance = 100 + Math.random() * 100;
-                const duration = 1000 + Math.random() * 1000;
+                const distance = 120 + Math.random() * 120;
+                const duration = 1200 + Math.random() * 1200;
                 
                 const animation = heart.animate([
-                    {
-                        transform: 'translate(0, 0) scale(1)',
-                        opacity: 1
-                    },
-                    {
-                        transform: `translate(${Math.cos(angle) * distance}px, ${Math.sin(angle) * distance}px) scale(0)`,
-                        opacity: 0
-                    }
+                    { transform: 'translate(0, 0) scale(1) rotate(0deg)', opacity: 1 },
+                    { transform: `translate(${Math.cos(angle) * distance}px, ${Math.sin(angle) * distance}px) scale(0) rotate(360deg)`, opacity: 0 }
                 ], {
                     duration: duration,
                     easing: 'ease-out'
@@ -607,14 +797,10 @@
             }
         }
         
-        // Close modals if clicked outside of content
-        window.addEventListener('click', function(event) {
-            if (event.target === reasonsModal) {
-                closeReasonsModal();
-            }
-            if (event.target === wishModal) {
-                closeWishModal();
-            }
+        // Close modals if clicked outside
+        window.addEventListener('click', (event) => {
+            if (event.target === reasonsModal) closeReasonsModal();
+            if (event.target === wishModal) closeWishModal();
         });
         
         // Memory quiz functionality
@@ -622,41 +808,83 @@
         const quizFeedback = document.getElementById('quiz-feedback');
         
         quizOptions.forEach(option => {
-            option.addEventListener('click', function() {
-                const isCorrect = this.getAttribute('data-correct') === 'true';
+            option.addEventListener('click', () => {
+                const isCorrect = option.getAttribute('data-correct') === 'true';
+                quizFeedback.textContent = isCorrect 
+                    ? 'That\'s right, my love! ❤️' 
+                    : 'Not quite! It was actually the Italian Restaurant.';
+                quizFeedback.style.color = isCorrect ? '#00b894' : '#ff6b81';
                 
-                if (isCorrect) {
-                    quizFeedback.textContent = 'That\'s right, my love! ❤️';
-                    quizFeedback.style.color = '#00b894';
-                } else {
-                    quizFeedback.textContent = 'Not quite! It was actually the Italian Restaurant.';
-                    quizFeedback.style.color = '#e84393';
-                }
-                
-                // Disable all options after selection
                 quizOptions.forEach(opt => {
                     opt.style.pointerEvents = 'none';
                     if (opt.getAttribute('data-correct') === 'true') {
-                        opt.style.background = 'rgba(0, 184, 148, 0.3)';
+                        opt.style.background = 'rgba(0, 184, 148, 0.4)';
                     }
                 });
             });
         });
         
+        // Music player functionality
+        const musicToggle = document.getElementById('music-toggle');
+        const audio = new Audio('https://www.bensound.com/bensound-music/bensound-happybirthday.mp3');
+        let isPlaying = false;
+        
+        musicToggle.addEventListener('click', () => {
+            if (isPlaying) {
+                audio.pause();
+                musicToggle.innerHTML = '<i class="fas fa-music"></i> Play Music';
+            } else {
+                audio.play();
+                musicToggle.innerHTML = '<i class="fas fa-pause"></i> Pause Music';
+            }
+            isPlaying = !isPlaying;
+        });
+        
+        // Countdown timer
+        function startCountdown() {
+            const countdownDate = new Date();
+            countdownDate.setFullYear(countdownDate.getFullYear() + 1, countdownDate.getMonth(), countdownDate.getDate());
+            
+            const daysEl = document.getElementById('days');
+            const hoursEl = document.getElementById('hours');
+            const minutesEl = document.getElementById('minutes');
+            const secondsEl = document.getElementById('seconds');
+            
+            const updateCountdown = () => {
+                const now = new Date();
+                const timeLeft = countdownDate - now;
+                
+                const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+                
+                daysEl.textContent = days;
+                hoursEl.textContent = hours;
+                minutesEl.textContent = minutes;
+                secondsEl.textContent = seconds;
+            };
+            
+            updateCountdown();
+            setInterval(updateCountdown, 1000);
+        }
+        
         // Initialize the page
-        window.addEventListener('load', function() {
+        window.addEventListener('load', () => {
             createHearts();
+            createConfetti();
             
-            // Animate elements on load
             const container = document.querySelector('.container');
-            container.style.opacity = 0;
-            container.style.transform = 'translateY(20px)';
-            
             setTimeout(() => {
-                container.style.transition = 'opacity 1s ease, transform 1s ease';
-                container.style.opacity = 1;
-                container.style.transform = 'translateY(0)';
-            }, 300);
+                document.getElementById('typing-title').classList.add('typing');
+            }, 1500);
+            
+            // Add index to photo frames for staggered animation
+            document.querySelectorAll('.photo-frame').forEach((frame, index) => {
+                frame.style.setProperty('--index', index + 1);
+            });
+            
+            startCountdown();
         });
     </script>
 </body>
