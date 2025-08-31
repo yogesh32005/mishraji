@@ -1,1 +1,663 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday, My Love!</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Raleway:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Raleway', sans-serif;
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+            color: #5a3e36;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 900px;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            padding: 30px;
+            margin-top: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            position: relative;
+        }
+        
+        h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 4rem;
+            color: #e84393;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            animation: pulse 2s infinite;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            color: #fd79a8;
+            margin-bottom: 20px;
+        }
+        
+        .heart-divider {
+            font-size: 2rem;
+            color: #e84393;
+            margin: 20px 0;
+        }
+        
+        .photo-gallery {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+        
+        .photo-frame {
+            width: 200px;
+            height: 200px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+            position: relative;
+        }
+        
+        .photo-frame:hover {
+            transform: scale(1.05);
+        }
+        
+        .photo-placeholder {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, #fd79a8, #fdcb6e);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+        }
+        
+        .message-section {
+            background: rgba(252, 182, 159, 0.1);
+            padding: 25px;
+            border-radius: 15px;
+            margin: 30px 0;
+            position: relative;
+        }
+        
+        .message-section h2 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.5rem;
+            color: #e84393;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        
+        .message-text {
+            line-height: 1.8;
+            font-size: 1.1rem;
+            text-align: center;
+        }
+        
+        .interactive-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            margin: 30px 0;
+        }
+        
+        .reasons-btn {
+            background: linear-gradient(to right, #e84393, #fd79a8);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            font-family: 'Raleway', sans-serif;
+            font-weight: 500;
+            box-shadow: 0 5px 15px rgba(232, 67, 147, 0.4);
+        }
+        
+        .reasons-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(232, 67, 147, 0.6);
+        }
+        
+        .wish-btn {
+            background: linear-gradient(to right, #0984e3, #00cec9);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            font-family: 'Raleway', sans-serif;
+            font-weight: 500;
+            box-shadow: 0 5px 15px rgba(9, 132, 227, 0.4);
+            margin-top: 20px;
+        }
+        
+        .wish-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(9, 132, 227, 0.6);
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            color: #fd79a8;
+            font-size: 1.1rem;
+        }
+        
+        .hearts-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 100;
+        }
+        
+        .heart {
+            position: absolute;
+            font-size: 20px;
+            color: #e84393;
+            opacity: 0;
+            animation: fall 5s linear infinite;
+        }
+        
+        /* Popup Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .modal-content {
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+            padding: 40px;
+            border-radius: 20px;
+            max-width: 600px;
+            width: 90%;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.3);
+            animation: modalAppear 0.5s ease-out;
+        }
+        
+        .reasons-modal-content {
+            max-width: 700px;
+        }
+        
+        .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 1.5rem;
+            color: #e84393;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        
+        .close-btn:hover {
+            transform: scale(1.2);
+        }
+        
+        .modal-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.5rem;
+            color: #e84393;
+            margin-bottom: 20px;
+        }
+        
+        .modal-text {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            margin-bottom: 30px;
+            color: #5a3e36;
+        }
+        
+        .modal-heart {
+            font-size: 3rem;
+            color: #e84393;
+            margin: 20px 0;
+            animation: pulse 1.5s infinite;
+        }
+        
+        .reasons-list {
+            list-style: none;
+            text-align: left;
+            margin: 20px 0;
+        }
+        
+        .reasons-list li {
+            padding: 15px;
+            margin: 15px 0;
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 10px;
+            font-size: 1.1rem;
+            transition: transform 0.3s;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+        }
+        
+        .reasons-list li:hover {
+            transform: translateX(10px);
+            background: rgba(255, 255, 255, 0.9);
+        }
+        
+        .reasons-list li i {
+            color: #e84393;
+            margin-right: 15px;
+            font-size: 1.5rem;
+        }
+        
+        @keyframes fall {
+            0% {
+                transform: translateY(-10vh) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(110vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        @keyframes modalAppear {
+            0% { transform: scale(0.8); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        
+        .memory-section {
+            margin: 30px 0;
+            text-align: center;
+        }
+        
+        .memory-quiz {
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+        }
+        
+        .quiz-question {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+        }
+        
+        .quiz-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        
+        .quiz-option {
+            background: rgba(253, 121, 168, 0.2);
+            padding: 10px 20px;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .quiz-option:hover {
+            background: rgba(253, 121, 168, 0.3);
+            transform: scale(1.05);
+        }
+        
+        .quiz-feedback {
+            font-weight: bold;
+            min-height: 24px;
+            margin-top: 10px;
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 3rem;
+            }
+            
+            .photo-frame {
+                width: 150px;
+                height: 150px;
+            }
+            
+            .message-text {
+                font-size: 1rem;
+            }
+            
+            .modal-content {
+                padding: 25px;
+            }
+            
+            .modal-title {
+                font-size: 2rem;
+            }
+            
+            .modal-text {
+                font-size: 1rem;
+            }
+            
+            .reasons-list li {
+                padding: 10px;
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="hearts-container" id="hearts-container"></div>
+    
+    <!-- Wish Popup Modal -->
+    <div class="modal" id="wish-modal">
+        <div class="modal-content">
+            <span class="close-btn" id="close-wish-modal">&times;</span>
+            <h2 class="modal-title">Make a Wish, My Love</h2>
+            <div class="modal-heart">
+                <i class="fas fa-heart"></i>
+            </div>
+            <p class="modal-text">
+                To the Most Amazing Woman<br><br>
+                On this special day, I want to remind you how incredibly loved you are. Your smile brightens my darkest days, your laughter is my favorite melody, and your love is the greatest gift I've ever received. You make every day an adventure worth cherishing, and I'm so grateful to walk through life with you by my side.
+                <br><br>
+                Today is all about celebrating you - the wonderful, beautiful, kind-hearted person you are. May your birthday be as radiant as your smile and as joyful as the happiness you bring to others.
+            </p>
+            <button class="wish-btn" id="close-wish-modal-btn">
+                <i class="fas fa-heart"></i> Close Wish
+            </button>
+        </div>
+    </div>
+    
+    <!-- Reasons Popup Modal -->
+    <div class="modal" id="reasons-modal">
+        <div class="modal-content reasons-modal-content">
+            <span class="close-btn" id="close-reasons-modal">&times;</span>
+            <h2 class="modal-title">Reasons Why I Love You</h2>
+            <div class="modal-heart">
+                <i class="fas fa-heart"></i>
+            </div>
+            <ul class="reasons-list">
+                <li><i class="fas fa-smile"></i> Your beautiful smile that lights up my world</li>
+                <li><i class="fas fa-hands-helping"></i> The way you care for others selflessly</li>
+                <li><i class="fas fa-fire"></i> Your passion for life and everything you do</li>
+                <li><i class="fas fa-laugh"></i> How you make me laugh even on tough days</li>
+                <li><i class="fas fa-brain"></i> Your intelligence and the way you see the world</li>
+                <li><i class="fas fa-hand-holding-heart"></i> The feeling of your hand in mine</li>
+                <li><i class="fas fa-music"></i> Your voice that sounds like music to my ears</li>
+                <li><i class="fas fa-star"></i> The way you make ordinary moments extraordinary</li>
+            </ul>
+            <button class="wish-btn" id="close-reasons-modal-btn">
+                <i class="fas fa-heart"></i> Close
+            </button>
+        </div>
+    </div>
+    
+    <div class="container">
+        <header>
+            <h1>Happy Birthday, My Love!</h1>
+            <p class="subtitle">Every day with you is a gift I cherish</p>
+            <div class="heart-divider">
+                <i class="fas fa-heart"></i>
+                <i class="fas fa-heart"></i>
+                <i class="fas fa-heart"></i>
+            </div>
+        </header>
+        
+        <div class="photo-gallery">
+            <div class="photo-frame">
+                <div class="photo-placeholder">
+                    <i class="fas fa-heart"></i>
+                </div>
+            </div>
+            <div class="photo-frame">
+                <div class="photo-placeholder">
+                    <i class="fas fa-kiss-wink-heart"></i>
+                </div>
+            </div>
+            <div class="photo-frame">
+                <div class="photo-placeholder">
+                    <i class="fas fa-glass-cheers"></i>
+                </div>
+            </div>
+        </div>
+        
+        <section class="message-section">
+            <h2>To the Most Amazing Woman</h2>
+            <p class="message-text">
+                On this special day, I want to remind you how incredibly loved you are. Your smile brightens my darkest days, your laughter is my favorite melody, and your love is the greatest gift I've ever received. You make every day an adventure worth cherishing, and I'm so grateful to walk through life with you by my side.
+            </p>
+            <p class="message-text">
+                Today is all about celebrating you - the wonderful, beautiful, kind-hearted person you are. May your birthday be as radiant as your smile and as joyful as the happiness you bring to others.
+            </p>
+        </section>
+        
+        <section class="interactive-section">
+            <button class="reasons-btn" id="reasons-btn">
+                <i class="fas fa-heart"></i> Reasons Why I Love You
+            </button>
+            
+            <button class="wish-btn" id="wish-btn">
+                <i class="fas fa-star"></i> Make a Wish
+            </button>
+        </section>
+        
+        <section class="memory-section">
+            <h2>Our Special Memories</h2>
+            <div class="memory-quiz">
+                <p class="quiz-question">Where did we go on our first date?</p>
+                <div class="quiz-options">
+                    <div class="quiz-option" data-correct="true">Italian Restaurant</div>
+                    <div class="quiz-option">Movie Theater</div>
+                    <div class="quiz-option">Beach Walk</div>
+                    <div class="quiz-option">Coffee Shop</div>
+                </div>
+                <p class="quiz-feedback" id="quiz-feedback"></p>
+            </div>
+        </section>
+    </div>
+    
+    <footer>
+        <p>Made with <i class="fas fa-heart" style="color: #e84393;"></i> for you on your special day</p>
+    </footer>
 
+    <script>
+        // Create falling hearts
+        function createHearts() {
+            const heartsContainer = document.getElementById('hearts-container');
+            const heartCount = 30;
+            
+            for (let i = 0; i < heartCount; i++) {
+                const heart = document.createElement('div');
+                heart.innerHTML = '<i class="fas fa-heart"></i>';
+                heart.classList.add('heart');
+                
+                // Random positions and animation delays
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.animationDelay = Math.random() * 5 + 's';
+                heart.style.fontSize = (Math.random() * 20 + 10) + 'px';
+                
+                heartsContainer.appendChild(heart);
+            }
+        }
+        
+        // Modal functionality for reasons
+        const reasonsModal = document.getElementById('reasons-modal');
+        const reasonsBtn = document.getElementById('reasons-btn');
+        const closeReasonsModalBtn = document.getElementById('close-reasons-modal');
+        const closeReasonsModalBtn2 = document.getElementById('close-reasons-modal-btn');
+        
+        reasonsBtn.addEventListener('click', function() {
+            reasonsModal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+            
+            // Create a burst of hearts from the button
+            createHeartBurst(reasonsBtn);
+        });
+        
+        closeReasonsModalBtn.addEventListener('click', closeReasonsModal);
+        closeReasonsModalBtn2.addEventListener('click', closeReasonsModal);
+        
+        function closeReasonsModal() {
+            reasonsModal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+        
+        // Modal functionality for wish
+        const wishModal = document.getElementById('wish-modal');
+        const wishBtn = document.getElementById('wish-btn');
+        const closeWishModalBtn = document.getElementById('close-wish-modal');
+        const closeWishModalBtn2 = document.getElementById('close-wish-modal-btn');
+        
+        wishBtn.addEventListener('click', function() {
+            wishModal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+            
+            // Create a burst of hearts from the button
+            createHeartBurst(wishBtn);
+        });
+        
+        closeWishModalBtn.addEventListener('click', closeWishModal);
+        closeWishModalBtn2.addEventListener('click', closeWishModal);
+        
+        function closeWishModal() {
+            wishModal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+        
+        // Create heart burst animation
+        function createHeartBurst(button) {
+            const burstCount = 15;
+            
+            for (let i = 0; i < burstCount; i++) {
+                const heart = document.createElement('div');
+                heart.innerHTML = '<i class="fas fa-heart" style="color: #e84393;"></i>';
+                heart.style.position = 'absolute';
+                heart.style.fontSize = '20px';
+                heart.style.zIndex = '1000';
+                
+                const buttonRect = button.getBoundingClientRect();
+                const buttonX = buttonRect.left + buttonRect.width / 2;
+                const buttonY = buttonRect.top + buttonRect.height / 2;
+                
+                heart.style.left = buttonX + 'px';
+                heart.style.top = buttonY + 'px';
+                
+                document.body.appendChild(heart);
+                
+                // Animate hearts
+                const angle = Math.random() * Math.PI * 2;
+                const distance = 100 + Math.random() * 100;
+                const duration = 1000 + Math.random() * 1000;
+                
+                const animation = heart.animate([
+                    {
+                        transform: 'translate(0, 0) scale(1)',
+                        opacity: 1
+                    },
+                    {
+                        transform: `translate(${Math.cos(angle) * distance}px, ${Math.sin(angle) * distance}px) scale(0)`,
+                        opacity: 0
+                    }
+                ], {
+                    duration: duration,
+                    easing: 'ease-out'
+                });
+                
+                animation.onfinish = () => heart.remove();
+            }
+        }
+        
+        // Close modals if clicked outside of content
+        window.addEventListener('click', function(event) {
+            if (event.target === reasonsModal) {
+                closeReasonsModal();
+            }
+            if (event.target === wishModal) {
+                closeWishModal();
+            }
+        });
+        
+        // Memory quiz functionality
+        const quizOptions = document.querySelectorAll('.quiz-option');
+        const quizFeedback = document.getElementById('quiz-feedback');
+        
+        quizOptions.forEach(option => {
+            option.addEventListener('click', function() {
+                const isCorrect = this.getAttribute('data-correct') === 'true';
+                
+                if (isCorrect) {
+                    quizFeedback.textContent = 'That\'s right, my love! ❤️';
+                    quizFeedback.style.color = '#00b894';
+                } else {
+                    quizFeedback.textContent = 'Not quite! It was actually the Italian Restaurant.';
+                    quizFeedback.style.color = '#e84393';
+                }
+                
+                // Disable all options after selection
+                quizOptions.forEach(opt => {
+                    opt.style.pointerEvents = 'none';
+                    if (opt.getAttribute('data-correct') === 'true') {
+                        opt.style.background = 'rgba(0, 184, 148, 0.3)';
+                    }
+                });
+            });
+        });
+        
+        // Initialize the page
+        window.addEventListener('load', function() {
+            createHearts();
+            
+            // Animate elements on load
+            const container = document.querySelector('.container');
+            container.style.opacity = 0;
+            container.style.transform = 'translateY(20px)';
+            
+            setTimeout(() => {
+                container.style.transition = 'opacity 1s ease, transform 1s ease';
+                container.style.opacity = 1;
+                container.style.transform = 'translateY(0)';
+            }, 300);
+        });
+    </script>
+</body>
+</html>
